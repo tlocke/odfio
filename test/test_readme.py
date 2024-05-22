@@ -5,5 +5,5 @@ from pathlib import Path
 
 def test_readme():
     doctest.testfile(
-        str(Path("..") / "README.rst"), verbose=False, optionflags=doctest.ELLIPSIS
+        str(Path("..") / "README.md"), verbose=False, optionflags=doctest.ELLIPSIS
     )

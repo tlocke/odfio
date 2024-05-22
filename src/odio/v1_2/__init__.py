@@ -1,6 +1,7 @@
 import xml.dom.minidom
 import zipfile
 from datetime import datetime as Datetime
+from decimal import Decimal
 from tempfile import NamedTemporaryFile
 from xml.dom import Node
 
@@ -40,7 +41,7 @@ class XmlWriter:
             return ""
         else:
             return " " + " ".join(
-                k + "=" + quoteattr(v) for k, v in sorted(attrs.items())
+                f"{k}={quoteattr(v)}" for k, v in sorted(attrs.items())
             )
 
     def _write(self, line, indent=True):
@@ -242,7 +243,7 @@ class SpreadsheetWriter:
                 elif isinstance(val, bool):
                     atts["office:value-type"] = "boolean"
                     atts["office:boolean-value"] = "true" if val else "false"
-                elif isinstance(val, (float, int)):
+                elif isinstance(val, (float, int, Decimal)):
                     atts["office:value-type"] = "float"
                     atts["office:value"] = str(val)
                 elif isinstance(val, odio.Formula):

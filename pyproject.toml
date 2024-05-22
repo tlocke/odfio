@@ -1,15 +1,45 @@
 [build-system]
-requires = [
-    "setuptools>=42",
-    "versioningit >= 1.1.1",
+requires = ["hatchling", "versioningit"]
+build-backend = "hatchling.build"
+
+[project]
+name = "odio"
+authors = [{name = "The Contributors"}]
+description = "A library for the import / export of ODF documents."
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["odf", "ods", "odt"]
+license = {text = "MIT No Attribution"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT No Attribution License (MIT-0)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Operating System :: OS Independent",
 ]
-build-backend = "setuptools.build_meta"
+dynamic = ["version"]
 
-[tool.versioningit]
+[project.urls]
+Homepage = "https://github.com/tlocke/odio"
 
-[tool.versioningit.vcs]
-method = "git"
-default-tag = "0.0.0"
+[tool.hatch.version]
+source = "versioningit"
+default-version = "0.0.0"
+
+[tool.flake8]
+application-names = ["odio"]
+ignore = ["E203", "W503"]
+max-line-length = 88
+exclude = [".git", "__pycache__", "build", "dist", "venv", ".tox"]
+application-import-names = ["odio"]
 
 [tool.tox]
 legacy_tox_ini = """
@@ -28,4 +58,5 @@ deps =
     black
     flake8
     flake8-alphabetize
+		flake8-pyproject
 """
