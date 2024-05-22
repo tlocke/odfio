@@ -121,6 +121,10 @@ Run ``tox`` make sure all tests pass, then update the release notes and then do:
 
 # Release Notes
 
+## Version 0.0.23, 2024-05-22
+
+- When writing out to a spreadsheet, interpret a `decimal.Decimal` as a number.
+
 
 ## Version 0.0.22, 2021-02-08
 
